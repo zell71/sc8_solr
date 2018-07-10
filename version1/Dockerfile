@@ -87,6 +87,20 @@ RUN cp -af $SOLR_PATH/configsets/basic_configs $SOLR_PATH/social_messages_master
 COPY schema.xml $SOLR_PATH/social_messages_master/conf/
 RUN echo name=social_messages_master > $SOLR_PATH/social_messages_master/core.properties
 
+# Adding sitecore_marketingdefinitions_master core
+RUN cp -af $SOLR_PATH/configsets/basic_configs $SOLR_PATH/sitecore_marketingdefinitions_master
+COPY schema.xml $SOLR_PATH/sitecore_marketingdefinitions_master/conf/
+RUN echo name=sitecore_marketingdefinitions_master > $SOLR_PATH/sitecore_marketingdefinitions_master/core.properties
+
+# Adding sitecore_marketingdefinitions_web core
+RUN cp -af $SOLR_PATH/configsets/basic_configs $SOLR_PATH/sitecore_marketingdefinitions_web
+COPY schema.xml $SOLR_PATH/sitecore_marketingdefinitions_web/conf/
+RUN echo name=sitecore_marketingdefinitions_web > $SOLR_PATH/sitecore_marketingdefinitions_web/core.properties
+
+# Adding sitecore_preview_index core
+RUN cp -af $SOLR_PATH/configsets/basic_configs $SOLR_PATH/sitecore_preview_index
+COPY schema.xml $SOLR_PATH/sitecore_preview_index/conf/
+RUN echo name=sitecore_preview_index > $SOLR_PATH/sitecore_preview_index/core.properties
 
 EXPOSE 8983
 WORKDIR /opt/solr
